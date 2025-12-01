@@ -7,16 +7,26 @@ import { Pricing } from '@/components/Pricing'
 import { CTA } from '@/components/CTA'
 import { Footer } from '@/components/Footer'
 import { Navigation } from '@/components/Navigation'
+import { UserDashboard } from '@/components/UserDashboard'
+import { useAuth } from '@/lib/AuthContext'
 
 export default function Home() {
+  const { user } = useAuth();
+
   return (
     <main className="min-h-screen">
       <Navigation />
-      <Hero />
-      <Features />
-      <HowItWorks />
-      <Pricing />
-      <CTA />
+      {user ? (
+        <UserDashboard />
+      ) : (
+        <>
+          <Hero />
+          <Features />
+          <HowItWorks />
+          <Pricing />
+          <CTA />
+        </>
+      )}
       <Footer />
     </main>
   )

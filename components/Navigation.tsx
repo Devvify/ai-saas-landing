@@ -2,19 +2,38 @@
 
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { Menu, X, Zap } from 'lucide-react';
+import { Menu, X, Zap, User, LogOut, Settings } from 'lucide-react';
+import { SignInModal } from './SignInModal';
+import { useAuth } from '@/lib/AuthContext';
+import Image from 'next/image';
 
 export const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const [isSignInOpen, setIsSignInOpen] = useState(false);
+  const [isUserMenuOpen, setIsUserMenuOpen] = useState(false);
+  
+  const { user, signOut } = useAuth();
 
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 10);
     };
+    
+    const handleClickOutside = (event: MouseEvent) => {
+      if (isUserMenuOpen) {
+        setIsUserMenuOpen(false);
+      }
+    };
+    
     window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+    document.addEventListener('click', handleClickOutside);
+    
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      document.removeEventListener('click', handleClickOutside);
+    };
+  }, [isUserMenuOpen]);
 
   const navLinks = [
     { href: '#features', label: 'Features' },
@@ -61,13 +80,61 @@ export const Navigation = () => {
 
           {/* CTA Buttons */}
           <div className="hidden md:flex items-center space-x-4">
-            <motion.button
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              className="text-gray-600 hover:text-primary-600 transition-colors font-medium"
-            >
-              Sign In
-            </motion.button>
+            {user ? (
+              <div className="relative">
+                <motion.button
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                  onClick={() => setIsUserMenuOpen(!isUserMenuOpen)}
+                  className="flex items-center space-x-2 text-gray-600 hover:text-primary-600 transition-colors font-medium"
+                >
+                  {user.avatar ? (
+                    <Image 
+                      src={user.avatar} 
+                      alt={user.name}
+                      width={32}
+                      height={32}
+                      className="w-8 h-8 rounded-full"
+                    />
+                  ) : (
+                    <div className="w-8 h-8 bg-primary-600 rounded-full flex items-center justify-center">
+                      <User className="w-4 h-4 text-white" />
+                    </div>
+                  )}
+                  <span>{user.name}</span>
+                </motion.button>
+                
+                {/* User Dropdown Menu */}
+                {isUserMenuOpen && (
+                  <motion.div
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    className="absolute right-0 mt-2 w-48 bg-white rounded-lg shadow-lg border border-gray-200 py-2 z-10"
+                  >
+                    <a href="#" className="flex items-center px-4 py-2 text-gray-700 hover:bg-gray-50">
+                      <Settings className="w-4 h-4 mr-2" />
+                      Settings
+                    </a>
+                    <button
+                      onClick={signOut}
+                      className="w-full flex items-center px-4 py-2 text-gray-700 hover:bg-gray-50"
+                    >
+                      <LogOut className="w-4 h-4 mr-2" />
+                      Sign Out
+                    </button>
+                  </motion.div>
+                )}
+              </div>
+            ) : (
+              <motion.button
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                onClick={() => setIsSignInOpen(true)}
+                className="text-gray-600 hover:text-primary-600 transition-colors font-medium"
+              >
+                Sign In
+              </motion.button>
+            )}
             <motion.button
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
@@ -107,9 +174,47 @@ export const Navigation = () => {
               </a>
             ))}
             <div className="pt-4 space-y-2">
-              <button className="w-full text-left text-gray-600 hover:text-primary-600 transition-colors font-medium">
-                Sign In
-              </button>
+              {user ? (
+                <>
+                  <div className="flex items-center space-x-2 px-0 py-2">
+                    {user.avatar ? (
+                      <Image 
+                        src={user.avatar} 
+                        alt={user.name}
+                        width={32}
+                        height={32}
+                        className="w-8 h-8 rounded-full"
+                      />
+                    ) : (
+                      <div className="w-8 h-8 bg-primary-600 rounded-full flex items-center justify-center">
+                        <User className="w-4 h-4 text-white" />
+                      </div>
+                    )}
+                    <span className="text-gray-900 font-medium">{user.name}</span>
+                  </div>
+                  <button className="w-full text-left text-gray-600 hover:text-primary-600 transition-colors font-medium flex items-center">
+                    <Settings className="w-4 h-4 mr-2" />
+                    Settings
+                  </button>
+                  <button
+                    onClick={signOut}
+                    className="w-full text-left text-gray-600 hover:text-primary-600 transition-colors font-medium flex items-center"
+                  >
+                    <LogOut className="w-4 h-4 mr-2" />
+                    Sign Out
+                  </button>
+                </>
+              ) : (
+                <button 
+                  onClick={() => {
+                    setIsSignInOpen(true);
+                    setIsOpen(false);
+                  }}
+                  className="w-full text-left text-gray-600 hover:text-primary-600 transition-colors font-medium"
+                >
+                  Sign In
+                </button>
+              )}
               <button className="w-full bg-primary-600 text-white px-6 py-2 rounded-lg hover:bg-primary-700 transition-colors font-medium">
                 Start Free Trial
               </button>
@@ -117,6 +222,12 @@ export const Navigation = () => {
           </div>
         </motion.div>
       </div>
+      
+      {/* Sign In Modal */}
+      <SignInModal 
+        isOpen={isSignInOpen} 
+        onClose={() => setIsSignInOpen(false)} 
+      />
     </motion.nav>
   );
 };
