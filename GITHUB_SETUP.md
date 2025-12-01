@@ -37,8 +37,7 @@ Your AI SaaS Landing Page template is now ready for GitHub upload! Here's what h
 
 ### 2. Connect Local Repository to GitHub
 ```bash
-# Replace 'yourusername' with your GitHub username
-git remote add origin https://github.com/yourusername/ai-saas-landing-page.git
+git remote add origin https://github.com/Devvify/ai-saas-landing-page.git
 git push -u origin main
 ```
 

@@ -8,7 +8,7 @@ Vercel is the easiest way to deploy Next.js applications.
 
 ### One-Click Deploy
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/yourusername/ai-saas-landing-page)
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/Devvify/ai-saas-landing-page)
 
 ### Manual Deploy
 
@@ -28,7 +28,7 @@ Vercel is the easiest way to deploy Next.js applications.
 
 ### One-Click Deploy
 
-[![Deploy to Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/yourusername/ai-saas-landing-page)
+[![Deploy to Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/Devvify/ai-saas-landing-page)
 
 ### Manual Deploy
 

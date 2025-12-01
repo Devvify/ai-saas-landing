@@ -51,7 +51,7 @@ A modern, responsive landing page template built with Next.js 14, TypeScript, Ta
 
 1. **Clone the repository**
    ```bash
-   git clone https://github.com/yourusername/ai-saas-landing-page.git
+   git clone https://github.com/Devvify/ai-saas-landing-page.git
    cd ai-saas-landing-page
    ```
 
@@ -134,10 +134,10 @@ All content is stored in `data/content.ts`. Update this file to customize:
 ## 🚀 Deployment
 
 ### Vercel (Recommended)
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/yourusername/ai-saas-landing-page)
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/Devvify/ai-saas-landing-page)
 
 ### Netlify
-[![Deploy to Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/yourusername/ai-saas-landing-page)
+[![Deploy to Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/Devvify/ai-saas-landing-page)
 
 ### Manual Deployment
 ```bash

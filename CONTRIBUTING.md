@@ -53,7 +53,7 @@ Enhancement suggestions are tracked as GitHub issues. When creating an enhanceme
 
 ```bash
 # Clone your fork
-git clone https://github.com/yourusername/ai-saas-landing-page.git
+git clone https://github.com/Devvify/ai-saas-landing-page.git
 
 # Install dependencies
 npm install

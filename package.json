@@ -4,13 +4,13 @@
   "description": "A modern, responsive AI SaaS landing page template built with Next.js 14, TypeScript, Tailwind CSS, and Framer Motion",
   "author": "Your Name <your.email@example.com>",
   "license": "MIT",
-  "homepage": "https://github.com/yourusername/ai-saas-landing-page#readme",
+  "homepage": "https://github.com/Devvify/ai-saas-landing-page#readme",
   "repository": {
     "type": "git",
-    "url": "https://github.com/yourusername/ai-saas-landing-page.git"
+    "url": "https://github.com/Devvify/ai-saas-landing-page.git"
   },
   "bugs": {
-    "url": "https://github.com/yourusername/ai-saas-landing-page/issues"
+    "url": "https://github.com/Devvify/ai-saas-landing-page/issues"
   },
   "keywords": [
     "nextjs",
