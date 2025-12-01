@@ -7,17 +7,6 @@ A modern, responsive landing page template built with Next.js 14, TypeScript, Ta
 ![Tailwind CSS](https://img.shields.io/badge/Tailwind-3-38B2AC?style=for-the-badge&logo=tailwind-css)
 ![Framer Motion](https://img.shields.io/badge/Framer_Motion-10-purple?style=for-the-badge&logo=framer)
 
-## 📸 Screenshots
-
-### Hero Section
-![Hero Section](./docs/hero-section.png)
-
-### Features Section  
-![Features Section](./docs/features-section.png)
-
-### Pricing Section
-![Pricing Section](./docs/pricing-section.png)
-
 ## 🚀 Demo
 
 🔗 **[Live Demo](https://your-demo-url.com)** (Replace with your deployed URL)
@@ -168,7 +157,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## 📧 Support
 
-If you have any questions or need help, please open an issue on GitHub or reach out to [your-email@example.com](mailto:your-email@example.com).
+If you have any questions or need help, please open an issue on GitHub or reach out to [your-email@example.com](mailto:ekdomtaza@gmail.com).
 
 ---
 
